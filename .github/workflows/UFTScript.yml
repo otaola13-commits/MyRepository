@@ -1,0 +1,78 @@
+name: Run UFT One Tests
+
+on:
+  workflow_dispatch:   # Permite lanzarlo manualmente
+
+env:
+  PROPS_TXT: PropsRunTests.txt
+  RES_XML: ResultsRunTests.xml
+  LAUNCHER_EXE: FTToolsLauncher.exe
+  LAUNCHER_URL: https://github.com/MicroFocus/ADM-FT-ToolsLauncher/releases/download/v1.0-beta-rev12/FTToolsLauncher_net48.exe
+
+defaults:
+  run:
+    shell: pwsh
+    working-directory: ..\\
+
+jobs:
+
+  # 1️⃣ Descargar el repositorio (tests incluidos)
+  getUftTests:
+    runs-on: self-hosted
+    steps:
+      - name: Mostrar directorio actual
+        run: echo "$pwd"
+      - name: Checkout del repositorio
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
+          clean: false
+
+  # 2️⃣ Crear archivo de propiedades que controla la ejecución de UFT
+  createPropsFile:
+    runs-on: self-hosted
+    needs: getUftTests
+    steps:
+      - name: Crear archivo Props
+        run: |
+          @"
+          runType=FileSystem
+          Test1=$($pwd.Path.Replace('\','\\'))
+          resultsFilename=$env:RES_XML
+          "@ > $env:PROPS_TXT
+
+      - name: Verificar que Props existe
+        run: Test-Path $env:PROPS_TXT
+
+  # 3️⃣ Descargar FTToolsLauncher (si no existe)
+  getFTToolsLauncher:
+    runs-on: self-hosted
+    needs: getUftTests
+    steps:
+      - name: Obtener FTToolsLauncher.exe
+        run: |
+          if (Test-Path $env:LAUNCHER_EXE) {
+            echo "FTToolsLauncher.exe ya existe"
+          } else {
+            curl -L -o $env:LAUNCHER_EXE $env:LAUNCHER_URL
+          }
+
+  # 4️⃣ Ejecutar las pruebas UFT One
+  runUftTestsFromFileSystem:
+    runs-on: self-hosted
+    needs: [getUftTests, createPropsFile, getFTToolsLauncher]
+    steps:
+      - name: Ejecutar pruebas UFT
+        id: run-tests
+        run: |
+          $p = Start-Process -FilePath "$env:LAUNCHER_EXE" `
+                -ArgumentList "-paramfile $env:PROPS_TXT" `
+                -Wait -PassThru -NoNewWindow
+
+          "ExitCode=$($p.ExitCode)" >> $env:GITHUB_OUTPUT
+
+      - if: ${{ steps.run-tests.outputs.ExitCode != 0 }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed("UFT tests failed with exit code ${{ steps.run-tests.outputs.ExitCode }}")
