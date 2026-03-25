@@ -30,7 +30,7 @@ jobs:
       run: |
         @"
         runType=FileSystem
-        Test1=´C:\Users\mortiz2\Desktop\Git Repository\GitActions\MyRepository\MyFirstScript´.Replace('\', '\\'))
+        Test1=C:\\Users\\mortiz2\\Desktop\\Git Repository\\GitActions\\MyRepository\\MyFirstScript
         resultUnifiedTestClassname=true
         resultTestNameOnly=true
         resultsFilename=$env:RES_XML
