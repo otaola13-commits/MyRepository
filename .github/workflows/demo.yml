@@ -63,3 +63,14 @@ jobs:
       with:
         script: |
           core.setFailed('The job runUftTestsFromFileSystem failed with status ${{steps.run-tests.outputs.X}} !')       
+
+          
+  runReportConverter:
+    runs-on: self-hosted
+    needs: getUftTests
+    steps:
+    - name: Run ReportConverter
+      id: convert-results 
+      run: |
+        $p = Start-Process -FilePath "$env:REPORT_EXE" -ArgumentList "-j  "out\\junit_report.xml" "C:\\Users\\mortiz2\\Desktop\\Git Repository\\GitActions\\MyRepository\\MyFirstScript\\Report1\\Report""
+#        "X=$($p.ExitCode)" >> $env:GITHUB_OUTPUT
