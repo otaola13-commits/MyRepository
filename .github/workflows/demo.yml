@@ -9,6 +9,7 @@ env:
   RES_XML: ResultsMultiTests.xml
   LAUNCHER_EXE: FTToolsLauncher.exe
   LAUNCHER_URL: https://github.com/MicroFocus/ADM-FT-ToolsLauncher/releases/download/v25.2.0/FTToolsLauncher_net48.exe
+  REPORT_EXE: ReportConverter.exe
 
 defaults:
   run:
