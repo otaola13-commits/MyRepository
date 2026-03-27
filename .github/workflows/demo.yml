@@ -11,7 +11,7 @@ env:
   LAUNCHER_URL: https://github.com/MicroFocus/ADM-FT-ToolsLauncher/releases/download/v25.2.0/FTToolsLauncher_net48.exe
   REPORT_EXE: ReportConverter.exe
   OUT_REPORT: 27032026_junit_report.xml
-  RESULTS_PATH: C:\\Users\\mortiz2\\Desktop\\Git Repository\\GitActions\\MyRepository\\MyFirstScript\\Report1\\Report
+  RESULTS_PATH: C:\\Users\\mortiz2\\Desktop\\Git Repository\\GitActions\\MyRepository\\MyFirstScript\\Report1
 
 defaults:
   run:
@@ -75,5 +75,5 @@ jobs:
     - name: Run ReportConverter
       id: convert-results 
       run: |
-        $p = Start-Process -FilePath "$env:REPORT_EXE" -ArgumentList "-j  "$env:OUT_REPORT" "$env:RESULTS_PATH"
+        $p = Start-Process -FilePath "$env:REPORT_EXE" -ArgumentList "-j  \"$env:OUT_REPORT\" \"$env:RESULTS_PATH\""
 #        "X=$($p.ExitCode)" >> $env:GITHUB_OUTPUT
