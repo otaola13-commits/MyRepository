@@ -67,7 +67,7 @@ jobs:
           
   runReportConverter:
     runs-on: self-hosted
-    needs: getUftTests
+    needs:  runUftTestsFromFileSystem
     steps:
     - name: Run ReportConverter
       id: convert-results 
