@@ -75,5 +75,5 @@ jobs:
     - name: Run ReportConverter
       id: convert-results 
       run: |
-        $p = Start-Process -FilePath "$env:REPORT_EXE" -ArgumentList "-j  \"$env:OUT_REPORT\" \"$env:RESULTS_PATH\""
+        $p = Start-Process -FilePath "$env:REPORT_EXE" -ArgumentList '-j  "$env:OUT_REPORT" "$env:RESULTS_PATH"'
 #        "X=$($p.ExitCode)" >> $env:GITHUB_OUTPUT
