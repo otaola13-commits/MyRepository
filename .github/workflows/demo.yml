@@ -75,5 +75,5 @@ jobs:
     - name: Run ReportConverter
       id: convert-results 
       run: |
-        $p = Start-Process -FilePath "$env:REPORT_EXE" -j  "C:\Users\mortiz2\Desktop\Git Repository\GitActions\MyRepository\01042026_junit_report.xml" "C:\Users\mortiz2\Desktop\Git Repository\GitActions\MyRepository\MyFirstScript\Report1"
+        $p = Start-Process -FilePath "$env:REPORT_EXE" -ArgumentList '-j "$env:OUT_REPORT" "$env:RESULTS_PATH"' -Wait -NoNewWindow -PassThru
         "X=$($p.ExitCode)" >> $env:GITHUB_OUTPUT
