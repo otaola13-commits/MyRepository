@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testsuites xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <testsuite name="GUI-00001: Iteration 1 / Action1" timestamp="2026-03-25T10:47:16+01:00" hostname="\OTX-87XR5F4" tests="0" failures="0" errors="0" time="0" package="MyFirstScript - Report1" id="0">
+    <properties>
+      <property name="Testing tool" value="OpenText Functional Testing 26.1" />
+      <property name="Operating system" value="Windows 11 25H2 (x64)" />
+      <property name="Locale" value="English (United States)" />
+      <property name="Login user" value="OPENTEXT\mortiz2" />
+      <property name="CPU" value="16 x Intel(R) Core(TM) Ultra 7 265H" />
+      <property name="Memory" value="64981 MB" />
+      <property name="Iteration index" value="1" />
+      <property name="AUT 1" value="Edge 146.0 C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" />
+    </properties>
+  </testsuite>
+</testsuites>

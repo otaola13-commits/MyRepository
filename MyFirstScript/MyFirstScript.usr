@@ -36,14 +36,13 @@ Version=26.1
 
 [TulipAddins]
 AF=
-AgGrid=
 AI=
 Database=
 File Content=
 Insight=
 Windows Applications=
 TEA=
-Web=
+WPF=
 XML=
 
 [ExtraFiles]

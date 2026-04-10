@@ -1,0 +1,1 @@
+﻿var __testDataSource={items:[{dataFilePath:'Default.xlsx',dataFileFormat:'excel',dataFileFolder:'C:\\Users\\mortiz2\\Desktop\\Git Repository\\GitActions\\MyRepository\\MyFirstScript\\Report2',namePairs:[]}]};
