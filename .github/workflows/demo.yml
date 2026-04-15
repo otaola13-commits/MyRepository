@@ -10,7 +10,7 @@ env:
   LAUNCHER_EXE: FTToolsLauncher.exe
   LAUNCHER_URL: https://github.com/MicroFocus/ADM-FT-ToolsLauncher/releases/download/v25.2.0/FTToolsLauncher_net48.exe
   REPORT_EXE: ReportConverter.exe
-  OUT_REPORT: C:\Users\mortiz2\Desktop\Git Repository\GitActions\MyRepository\01042026_junit_report.xml
+  OUT_REPORT: C:\Users\mortiz2\Desktop\Git Repository\GitActions\MyRepository\16042026_junit_report.xml
   RESULTS_PATH: C:\Users\mortiz2\Desktop\Git Repository\GitActions\MyRepository\MyFirstScript\Report1
 
 defaults:
